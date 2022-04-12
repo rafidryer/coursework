@@ -7,6 +7,16 @@
 #include "mmu.h"
 #include "proc.h"
 
+int 
+sys_sys_mprotect(void *addr, int len){
+  return 0;
+}
+
+int 
+sys_munprotect(void *addr, int len){
+  return 0;
+}
+
 int
  sys_hello(void) {
     cprintf("Hello world\n");
