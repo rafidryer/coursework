@@ -18,9 +18,9 @@ sys_mprotect(void){
 	}
 
   // check the length is at least 1
-    if (len <= 0){
-        return -1;
-    }
+    if(argint(1, &len) <= 0){
+		return -1;
+	}
 
     // check the address is greater then zero
     if ((int) addr % PGSIZE != 0){
@@ -40,9 +40,9 @@ sys_munprotect(void){
 	}
 
   // check the length is at least 1
-    if (len <= 0){
-        return -1;
-    }
+    if(argint(1, &len) <= 0){
+		return -1;
+	}
 
     // check the address is greater then zero
     if ((int) addr % PGSIZE != 0){
