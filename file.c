@@ -1,5 +1,5 @@
 //
-// File descriptors rafi's
+// File descriptors r
 //
 
 #include "types.h"
