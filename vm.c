@@ -411,7 +411,7 @@ mprotect(void *addr, int len){
 
 int
 munprotect(void *addr, int len){
-   struct proc *current = myproc();
+  //  struct proc *current = myproc();
 
     // check the length is at least 1
     if (len <= 0){
