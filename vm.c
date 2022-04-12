@@ -395,7 +395,39 @@ copyout(pde_t *pgdir, uint va, void *p, uint len)
 int
 mprotect(void *addr, int len){
   //  struct proc *current = myproc();
+    if (len <= 0){
+        return -1;
+    }
 
+    // check the address is greater then zero
+    if ((int)(&addr) % PGSIZE != 0){
+        return -1;
+    }
+
+    int current = (int) addr;
+    pte_t *pageTableEntry;
+
+    for (int i = 0; i < len; ++i) {
+        pageTableEntry = walkpgdir(myproc()->pgdir, (void *) current, 0);
+        if (pageTableEntry == 0) {
+            return -1;
+        }
+        return -1;
+    }
+
+    // iterate through the pages in the range
+    current = (int) addr;
+    for (int i = 0; i < len; ++i) {
+        pageTableEntry = walkpgdir(myproc()->pgdir, (void *) current, 0);
+        if (pageTableEntry == 0)
+            return -1;
+        
+        // set the page to be writable
+        *pageTableEntry |= PTE_W;
+        current += PGSIZE;
+    }
+
+    lcr3(V2P(myproc()->pgdir));
     return 0;
 }
 
@@ -413,6 +445,7 @@ munprotect(void *addr, int len){
         return -1;
     }
 
+    lcr3(V2P(myproc()->pgdir));
     return 0;
 }
 

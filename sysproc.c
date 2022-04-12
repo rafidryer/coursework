@@ -32,7 +32,7 @@ sys_mprotect(void){
 
 int 
 sys_munprotect(void){
-  int *addr;
+  int addr;
   int len;
 
   if(argptr(0, (void *) &addr, sizeof(void *)) < 0){
@@ -49,14 +49,8 @@ sys_munprotect(void){
         return -1;
     }
 
-  return munprotect(addr, len);
+  return munprotect((void*)addr, len);
 }
-
-int
- sys_hello(void) {
-    cprintf("Hello world\n");
-    return 12;
- }
 
 int
 sys_fork(void)

@@ -23,7 +23,6 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-int hello(void);
 int mprotect(void *addr, int len);
 int munprotect(void *addr, int len);
 
