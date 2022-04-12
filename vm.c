@@ -394,7 +394,7 @@ copyout(pde_t *pgdir, uint va, void *p, uint len)
 
 int
 mprotect(void *addr, int len){
-   struct proc *current = myproc();
+  //  struct proc *current = myproc();
 
     // check the length is at least 1
     if (len <= 0){

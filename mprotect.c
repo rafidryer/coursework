@@ -1,15 +1,16 @@
 #include "types.h"
 #include "stat.h"
 #include "user.h"
+
  
 int 
 main(int len, char ** i) {
 
-    struct proc *current = myproc();
+    // struct proc *current = myproc();
 
     // check the length is at least 1
     if (len <= 0){
-        cprintf("\nLen needs to be one or greater");
+        printf("\nLen needs to be one or greater");
         return -1;
     }
 
