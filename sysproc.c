@@ -10,7 +10,7 @@
 int 
 sys_mprotect(void){
 
-  int *addr;
+  int addr;
   int len;
 
   if(argint(0, &addr) < 0){
@@ -27,7 +27,7 @@ sys_mprotect(void){
         return -1;
     }
 
-  return mprotect(addr, len);
+  return mprotect((void*)addr, len);
 }
 
 int 
