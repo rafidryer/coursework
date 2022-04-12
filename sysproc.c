@@ -8,12 +8,12 @@
 #include "proc.h"
 
 int 
-sys_sys_mprotect(void){
+sys_sys_mprotect(void *addr, int len){
   return 0;
 }
 
 int 
-sys_munprotect(void){
+sys_munprotect(void *addr, int len){
   return 0;
 }
 
