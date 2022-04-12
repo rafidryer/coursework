@@ -10,20 +10,46 @@
 int 
 sys_mprotect(void){
 
-  int addr;
+  int *addr;
   int len;
-  argint(0, &addr);
-  argint(1, &len);
-  return mprotect((void *) addr, len);
+
+  if(argptr(0, (void *) &addr, sizeof(void *)) < 0){
+		return -1;
+	}
+
+  // check the length is at least 1
+    if (len <= 0){
+        return -1;
+    }
+
+    // check the address is greater then zero
+    if ((int) addr % PGSIZE != 0){
+        return -1;
+    }
+
+  return mprotect(addr, len);
 }
 
 int 
 sys_munprotect(void){
-  int addr;
+  int *addr;
   int len;
-  argint(0, &addr);
-  argint(1, &len);
-  return munprotect((void *) addr, len);
+
+  if(argptr(0, (void *) &addr, sizeof(void *)) < 0){
+		return -1;
+	}
+
+  // check the length is at least 1
+    if (len <= 0){
+        return -1;
+    }
+
+    // check the address is greater then zero
+    if ((int) addr % PGSIZE != 0){
+        return -1;
+    }
+
+  return munprotect(addr, len);
 }
 
 int
