@@ -10,7 +10,7 @@ main(int len, char ** i) {
 
     // check the length is at least 1
     if (len <= 0){
-        printf("\nLen needs to be one or greater");
+        // printf("\nLen needs to be one or greater");
         return -1;
     }
 
