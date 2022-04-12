@@ -13,7 +13,7 @@ sys_mprotect(void){
   int *addr;
   int len;
 
-  if(argptr(0, (void *) &addr, sizeof(void *)) < 0){
+  if(argint(0, &addr) < 0){
 		return -1;
 	}
 
