@@ -9,12 +9,21 @@
 
 int 
 sys_mprotect(void){
-  return 0;
+
+  int addr;
+  int len;
+  argint(0, &addr);
+  argint(1, &len);
+  return mprotect((void *) addr, len);
 }
 
 int 
 sys_munprotect(void){
-  return 0;
+  int addr;
+  int len;
+  argint(0, &addr);
+  argint(1, &len);
+  return munprotect((void *) addr, len);
 }
 
 int

@@ -392,6 +392,40 @@ copyout(pde_t *pgdir, uint va, void *p, uint len)
   return 0;
 }
 
+int
+mprotect(void *addr, int len){
+   struct proc *current = myproc();
+
+    // check the length is at least 1
+    if (len <= 0){
+        return -1;
+    }
+
+    // check the address is greater then zero
+    if ((int)(&addr) % PGSIZE != 0){
+        return -1;
+    }
+
+    return 0;
+}
+
+int
+munprotect(void *addr, int len){
+   struct proc *current = myproc();
+
+    // check the length is at least 1
+    if (len <= 0){
+        return -1;
+    }
+
+    // check the address is greater then zero
+    if ((int)(&addr) % PGSIZE != 0){
+        return -1;
+    }
+
+    return 0;
+}
+
 //PAGEBREAK!
 // Blank page.
 //PAGEBREAK!
