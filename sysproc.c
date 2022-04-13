@@ -10,7 +10,7 @@
 int 
 sys_mprotect(void){
 
-  printf("m protect sysproc.c");
+  printf(1, "m protect sysproc.c");
 
   int addr;
   int len;
