@@ -32,7 +32,7 @@ sys_mprotect(void){
         return -1;
     }
 
-  return mprotect((void*)addr, len);
+  return protect((void*)addr, len);
 }
 
 int 
@@ -54,7 +54,7 @@ sys_munprotect(void){
         return -1;
     }
 
-  return munprotect((void*)addr, len);
+  return unprotect((void*)addr, len);
 }
 
 int
