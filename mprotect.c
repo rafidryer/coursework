@@ -8,6 +8,7 @@
 #include "x86.h"
 #include "memlayout.h"
 #include "elf.h"
+#include "vm.c"
 
  
 int 
