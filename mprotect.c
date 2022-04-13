@@ -1,6 +1,6 @@
-#include "stat.h"
-#include "user.h"
-#include "fcntl.h"
+// #include "stat.h"
+// #include "user.h"
+// #include "fcntl.h"
 #include "vm.c"
 
  
