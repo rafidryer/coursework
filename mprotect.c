@@ -1,54 +1,54 @@
 // #include "stat.h"
 // #include "user.h"
-#include "fcntl.h"
-#include <stdio.h>
-#include "vm.c"
+// #include "fcntl.h"
+// #include <stdio.h>
+// #include "vm.c"
 
- 
-int 
-main(int argc,char *argv[]) {
+    
+// int 
+// main(int argc,char *argv[]) {
 
-    printf( "mProtect file\n\n");
+//     printf( "mProtect file\n\n");
 
-    struct proc *currentproc = myproc();
-    // int *str;
-    // str = (int*)PGROUNDUP((uint)sbrk(0));
-    int len;
-    int addr;
-    argint(0, &addr);
-    argint(1,&len);
+//     struct proc *currentproc = myproc();
+//     // int *str;
+//     // str = (int*)PGROUNDUP((uint)sbrk(0));
+//     int len;
+//     int addr;
+//     argint(0, &addr);
+//     argint(1,&len);
 
-    // mprotect((void *)str, len);
-    if (len <= 0){
-        printf("\nMprotect Failed");
-        return -1;
-    }
+//     // mprotect((void *)str, len);
+//     if (len <= 0){
+//         printf("\nMprotect Failed");
+//         return -1;
+//     }
 
-    // check the address is greater then zero
-    if ((int)(&addr) % PGSIZE != 0){
-        return -1;
-    }
+//     // check the address is greater then zero
+//     if ((int)(&addr) % PGSIZE != 0){
+//         return -1;
+//     }
 
-    // int current = (int) addr;
-    pte_t *pageTableEntry;
+//     // int current = (int) addr;
+//     pte_t *pageTableEntry;
 
-    // iterate through the pages in the range
-    int current = (int) addr;
-    for (int i = 0; i < len; ++i) {
-        pageTableEntry = walkpgdir(currentproc->pgdir, (void *) current, 0);
-        if (pageTableEntry == 0){
-            printf("\nMprotect Failed");
-            return -1;
-        }
+//     // iterate through the pages in the range
+//     int current = (int) addr;
+//     for (int i = 0; i < len; ++i) {
+//         pageTableEntry = walkpgdir(currentproc->pgdir, (void *) current, 0);
+//         if (pageTableEntry == 0){
+//             printf("\nMprotect Failed");
+//             return -1;
+//         }
         
-        // set the page to be writable
-        *pageTableEntry |= PTE_W;
-        current += PGSIZE;
-    }
+//         // set the page to be writable
+//         *pageTableEntry |= PTE_W;
+//         current += PGSIZE;
+//     }
 
-    lcr3(V2P(currentproc->pgdir));
-    printf("\nMprotect Passed");
+//     lcr3(V2P(currentproc->pgdir));
+//     printf("\nMprotect Passed");
 
-    return 0;
-    exit();
- }
+//     return 0;
+//     exit();
+//  }
