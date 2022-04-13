@@ -458,7 +458,7 @@ unprotect(void *addr, int len){
             return -1;
         }
         // set the page to be writable
-        *pageTableEntry |= (PTE_W);
+        *pageTableEntry |= ~PTE_W;
         current += PGSIZE;
     }
 
