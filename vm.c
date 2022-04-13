@@ -393,7 +393,7 @@ copyout(pde_t *pgdir, uint va, void *p, uint len)
 }
 
 int
-mprotect(void *addr, int len){
+protect(void *addr, int len){
 
   cprintf("\nmprotect vm\n");
   //  struct proc *current = myproc();
@@ -434,7 +434,7 @@ mprotect(void *addr, int len){
 }
 
 int
-munprotect(void *addr, int len){
+unprotect(void *addr, int len){
   //  struct proc *current = myproc();
 
     // check the length is at least 1
