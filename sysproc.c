@@ -6,6 +6,9 @@
 #include "memlayout.h"
 #include "mmu.h"
 #include "proc.h"
+#include "stat.h"
+// #include "user.h"
+#include "fcntl.h"
 
 int 
 sys_mprotect(void){
