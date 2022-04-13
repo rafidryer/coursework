@@ -398,56 +398,72 @@ protect(void *addr, int len){
   cprintf("\nmprotect vm\n");
   //  struct proc *current = myproc();
     if (len <= 0){
+      cprintf("\nmprotect failed\n");
         return -1;
     }
 
     // check the address is greater then zero
     if ((int)(&addr) % PGSIZE != 0){
+        cprintf("\nmprotect failed\n");
         return -1;
     }
 
     int current = (int) addr;
     pte_t *pageTableEntry;
 
-    for (int i = 0; i < len; ++i) {
-        pageTableEntry = walkpgdir(myproc()->pgdir, (void *) current, 0);
-        if (pageTableEntry == 0) {
-            return -1;
-        }
-        return -1;
-    }
-
     // iterate through the pages in the range
     current = (int) addr;
     for (int i = 0; i < len; ++i) {
         pageTableEntry = walkpgdir(myproc()->pgdir, (void *) current, 0);
-        if (pageTableEntry == 0)
+        if (pageTableEntry == 0){
+            cprintf("\nmprotect failed\n");
+
             return -1;
-        
+        }
         // set the page to be writable
-        *pageTableEntry |= PTE_W;
+        *pageTableEntry &= ~PTE_W;
         current += PGSIZE;
     }
 
     lcr3(V2P(myproc()->pgdir));
+    cprintf("\nmprotect success\n");
     return 0;
 }
 
 int
 unprotect(void *addr, int len){
-  //  struct proc *current = myproc();
 
     // check the length is at least 1
     if (len <= 0){
+      cprintf("\nmunprotect failed\n");
         return -1;
     }
 
     // check the address is greater then zero
     if ((int)(&addr) % PGSIZE != 0){
+      cprintf("\nmunprotect failed\n");
         return -1;
     }
 
+    int current = (int) addr;
+    pte_t *pageTableEntry;
+
+    // iterate through the pages in the range
+    current = (int) addr;
+    for (int i = 0; i < len; ++i) {
+        pageTableEntry = walkpgdir(myproc()->pgdir, (void *) current, 0);
+        if (pageTableEntry == 0){
+            cprintf("\nmunprotect failed\n");
+
+            return -1;
+        }
+        // set the page to be writable
+        *pageTableEntry |= (PTE_W);
+        current += PGSIZE;
+    }
+
     lcr3(V2P(myproc()->pgdir));
+    cprintf("\nmunprotect success\n");
     return 0;
 }
 
