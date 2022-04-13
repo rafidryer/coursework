@@ -8,7 +8,7 @@
 int 
 main(int argc,char *argv[]) {
 
-    printf(1, "mProtect file\n\n");
+    printf( "mProtect file\n\n");
 
     struct proc *currentproc = myproc();
     // int *str;
@@ -24,7 +24,7 @@ main(int argc,char *argv[]) {
     // printf(1,"\n\nrunning MPROTECT\n");
     // mprotect((void *)str, len);
     if (len <= 0){
-        printf(1,"\nMprotect Failed");
+        printf("\nMprotect Failed");
         return -1;
     }
 
@@ -41,7 +41,7 @@ main(int argc,char *argv[]) {
     for (int i = 0; i < len; ++i) {
         pageTableEntry = walkpgdir(currentproc->pgdir, (void *) current, 0);
         if (pageTableEntry == 0){
-            printf(1,"\nMprotect Failed");
+            printf("\nMprotect Failed");
             return -1;
         }
         
@@ -51,7 +51,7 @@ main(int argc,char *argv[]) {
     }
 
     lcr3(V2P(currentproc->pgdir));
-    printf(1,"\nMprotect Passed");
+    printf("\nMprotect Passed");
 
     return 0;
     exit();
