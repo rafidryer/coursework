@@ -10,6 +10,8 @@
 int 
 main(int argc,char *argv[]) {
 
+    printf(1, "mProtect file");
+
     // struct proc *current = myproc();
     int *str;
     str = (int*)PGROUNDUP((uint)sbrk(0));
