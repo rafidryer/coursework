@@ -395,7 +395,7 @@ copyout(pde_t *pgdir, uint va, void *p, uint len)
 int
 mprotect(void *addr, int len){
 
-  cprintf("mprotect vm");
+  cprintf("\nmprotect vm\n");
   //  struct proc *current = myproc();
     if (len <= 0){
         return -1;
