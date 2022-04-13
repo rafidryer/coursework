@@ -4,6 +4,12 @@
 #include "mmu.h"
 #include "fcntl.h"
 #include "proc.h"
+#include "param.h"
+#include "defs.h"
+#include "x86.h"
+#include "memlayout.h"
+#include "mmu.h"
+#include "elf.h"
 
  
 int 
