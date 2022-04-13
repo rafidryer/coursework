@@ -2,7 +2,7 @@
 #include "user.h"
 #include "fcntl.h"
 #include <stdio.h>
-// #include "vm.c"
+#include "vm.c"
 
  
 int 
