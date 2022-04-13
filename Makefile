@@ -191,8 +191,6 @@ UPROGS := \
 	_usertests\
 	_wc\
 	_zombie\
-	_mprotect\
-	_munprotect\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
