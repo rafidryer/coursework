@@ -1,13 +1,6 @@
-#include "types.h"
 #include "stat.h"
 #include "user.h"
-#include "mmu.h"
 #include "fcntl.h"
-#include "proc.h"
-#include "param.h"
-#include "x86.h"
-#include "memlayout.h"
-#include "elf.h"
 #include "vm.c"
 
  
